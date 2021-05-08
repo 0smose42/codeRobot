@@ -1,0 +1,14 @@
+<launch>
+ 
+ <!-- Spawn a robot into Gazebo -->
+    <!-- <param name="robot_description"
+           command="$(find xacro)/xacro '$(find osmose_description)/urdf/base.urdf' > -->
+           
+<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-file $(find osmose_description)/urdf/base.urdf -urdf -z 1 -model osmose" />
+
+
+  <include file="$(find osmose_gazebo_worlds)/launch/world_osmose.launch"/>
+
+
+    
+</launch>
