@@ -104,7 +104,7 @@
 
 
   <joint type="continuous" name="left_wheel_hinge">
-    <origin xyz="0.053 0.1225 -0.13" rpy="0 0 0"/>
+    <origin xyz="0.053 -0.1225 -0.13" rpy="0 0 0"/>
     <!--origin xyz="0.1 0.13 0" rpy="0 1.5707 1.5707"/-->
     <child link="left_wheel"/>
     <parent link="base_link"/>
@@ -114,7 +114,7 @@
   </joint>
 
   <joint type="continuous" name="right_wheel_hinge">
-    <origin xyz="0.053 -0.1225 -0.13" rpy="0 0 0"/>
+    <origin xyz="0.053 0.1225 -0.13" rpy="0 0 0"/>
     <!--origin xyz="0.1 -0.13 0" rpy="0 1.5707 1.5707"/-->
     <child link="right_wheel"/>
     <parent link="base_link"/>
@@ -160,6 +160,18 @@
     <!-- Set to true to swap right and left wheels, defaults to true -->
     <legacyMode>false</legacyMode>
   </plugin>
+
+
+
+      <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>${update_rate}</odometryRate>
+      <robotBaseFrame>base_link</robotBaseFrame>
+    </plugin>
+
+
 </gazebo>
 
 
