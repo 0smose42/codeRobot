@@ -53,7 +53,7 @@
 <!-- WHEEELLLLSSS-->
 
 
-<link name="left_wheel">
+<link name="lwheel">
     <!--origin xyz="0.1 0.13 0.1" rpy="0 1.5707 1.5707"/-->
     <collision name="collision">
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -78,7 +78,7 @@
     </inertial>
   </link>
 
-  <link name="right_wheel">
+  <link name="rwheel">
     <!--origin xyz="0.1 -0.13 0.1" rpy="0 1.5707 1.5707"/-->
     <collision name="collision">
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -106,7 +106,7 @@
   <joint type="continuous" name="left_wheel_hinge">
     <origin xyz="0.053 -0.1225 -0.13" rpy="0 0 0"/>
     <!--origin xyz="0.1 0.13 0" rpy="0 1.5707 1.5707"/-->
-    <child link="left_wheel"/>
+    <child link="lwheel"/>
     <parent link="base_link"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="10000" velocity="1000"/>
@@ -116,7 +116,7 @@
   <joint type="continuous" name="right_wheel_hinge">
     <origin xyz="0.053 0.1225 -0.13" rpy="0 0 0"/>
     <!--origin xyz="0.1 -0.13 0" rpy="0 1.5707 1.5707"/-->
-    <child link="right_wheel"/>
+    <child link="rwheel"/>
     <parent link="base_link"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="10000" velocity="1000"/>
@@ -125,54 +125,6 @@
 
 
 
-  <gazebo>
-  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-    <!-- Plugin update rate in Hz -->
-    <updateRate>${update_rate}</updateRate>
-    <!-- Name of left joint, defaults to `left_joint` -->
-    <leftJoint>left_wheel</leftJoint>
-    <!-- Name of right joint, defaults to `right_joint` -->
-    <rightJoint>right_wheel</rightJoint>
-    <!-- The distance from the center of one wheel to the other, in meters, defaults to 0.34 m -->
-    <wheelSeparation>0.245</wheelSeparation>
-    <!-- Diameter of the wheels, in meters, defaults to 0.15 m -->
-    <wheelDiameter>0.064</wheelDiameter>
-    <!-- Wheel acceleration, in rad/s^2, defaults to 0.0 rad/s^2 -->
-    <wheelAcceleration>1.0</wheelAcceleration>
-    <!-- Maximum torque which the wheels can produce, in Nm, defaults to 5 Nm -->
-    <wheelTorque>20</wheelTorque>
-    <!-- Topic to receive geometry_msgs/Twist message commands, defaults to `cmd_vel` -->
-    <commandTopic>cmd_vel</commandTopic>
-    <!-- Topic to publish nav_msgs/Odometry messages, defaults to `odom` -->
-    <odometryTopic>odom</odometryTopic>
-    <!-- Odometry frame, defaults to `odom` -->
-    <odometryFrame>odom</odometryFrame>
-    <!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
-    <robotBaseFrame>base_link</robotBaseFrame>
-    <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
-    <odometrySource>1</odometrySource>
-    <!-- Set to true to publish transforms for the wheel links, defaults to false -->
-    <publishWheelTF>true</publishWheelTF>
-    <!-- Set to true to publish transforms for the odometry, defaults to true -->
-    <publishOdom>true</publishOdom>
-    <!-- Set to true to publish sensor_msgs/JointState on /joint_states for the wheel joints, defaults to false -->
-    <publishWheelJointState>true</publishWheelJointState>
-    <!-- Set to true to swap right and left wheels, defaults to true -->
-    <legacyMode>false</legacyMode>
-  </plugin>
-
-
-
-      <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <odometryRate>${update_rate}</odometryRate>
-      <robotBaseFrame>base_link</robotBaseFrame>
-    </plugin>
-
-
-</gazebo>
 
 
 

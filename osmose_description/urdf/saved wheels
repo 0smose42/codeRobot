@@ -69,11 +69,13 @@
     <joint_properties damping="1.0" friction="1.0"/>
   </joint>
   
+  \
   
   
   
+  <!-- saved as im doing another test -->
   
-  <gazebo>
+   <gazebo>
   <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
     <!-- Plugin update rate in Hz -->
     <updateRate>${update_rate}</updateRate>
@@ -108,4 +110,17 @@
     <!-- Set to true to swap right and left wheels, defaults to true -->
     <legacyMode>false</legacyMode>
   </plugin>
+
+
+
+      <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>${update_rate}</odometryRate>
+      <robotBaseFrame>base_link</robotBaseFrame>
+    </plugin>
+
+
 </gazebo>
+

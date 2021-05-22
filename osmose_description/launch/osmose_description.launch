@@ -21,9 +21,17 @@
 
   <!-- Joint state publisher is used to compute the joints of the robot according to urdf
   robot_state_publisher is used to compute the static links of the robot according to urdf -->
+  
   <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
   <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  
+  
+  
+   <node pkg="osmose_description" type="diff_tf.py" name="diff_tf">
+     <param name="rate" value="8.0" />
+     <param name="base_width" value= "0.245"/>
+  </node>
   
   <!-- spawn a model in gazebo-->
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) -model osmose" respawn="false" output="screen" />
