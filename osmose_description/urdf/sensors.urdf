@@ -1,0 +1,22 @@
+<?xml version='1.0'?>
+
+ <!--
+    Sensor list.
+    Set the origin of the sensor frames correctly for your application
+    Look into the sensor macros in the package urdf/sensors to further adapt the sensor parameters 
+  -->
+
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<xacro:include filename="$(find osmose_description)/urdf/lidar.urdf"/>
+
+<!-- LIDAR TIM561 (here 551, except angular reso, not much diff)-->
+  <xacro:sick_tim551
+   name="lidar_tim561"
+   ros_topic="lidar"
+   parent_link="base_link">
+  <origin xyz="-0.08 0 0.19" rpy="0 0 3.14159"/>
+  </xacro:sick_tim551>
+
+
+</robot>

@@ -123,6 +123,11 @@
     <joint_properties damping="1.0" friction="1.0"/>
   </joint>
 
+<!-- Sensors -->
+<xacro:include filename="$(find osmose_description)/urdf/sensors.urdf"/>
+
+
+<!-- Gazebo plugin wheels-->
 
 
   <gazebo>
