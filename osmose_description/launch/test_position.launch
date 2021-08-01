@@ -1,0 +1,13 @@
+<launch>
+<!-- We define arguments that can influence the code -->
+<arg name="velocity_gain" default="1"/>  <!-- To reduce or increase the velocity output of the PID. -->
+<arg name="model_name" default="osmose"/> <!-- If several robots, we can have both running with same code but different namespcaes PID. -->
+<!-- We load a full file as parameters, makes things easier -->
+<rosparam file="$(find osmose_description)/config/pos_pid_control.yaml" command="load" />
+
+ <node pkg="osmose_description" type="PositionControl.py" name="position_control"
+        output="screen">
+        <param name="velocity_gain" value="$(arg velocity_gain)"/>
+    </node>
+   
+</launch>
