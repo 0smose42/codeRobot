@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.92.0 commit date:2021-02-24, commit time:16:25, hash:02948a2cab44</authoring_tool>
+    </contributor>
+    <created>2021-08-19T10:57:41</created>
+    <modified>2021-08-19T10:57:41</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_cameras>
+    <camera id="Camera-camera" name="Camera">
+      <optics>
+        <technique_common>
+          <perspective>
+            <xfov sid="xfov">39.59775</xfov>
+            <aspect_ratio>1.777778</aspect_ratio>
+            <znear sid="znear">0.1</znear>
+            <zfar sid="zfar">100</zfar>
+          </perspective>
+        </technique_common>
+      </optics>
+      <extra>
+        <technique profile="blender">
+          <shiftx sid="shiftx" type="float">0</shiftx>
+          <shifty sid="shifty" type="float">0</shifty>
+          <dof_distance sid="dof_distance" type="float">10</dof_distance>
+        </technique>
+      </extra>
+    </camera>
+  </library_cameras>
+  <library_lights>
+    <light id="Light-light" name="Light">
+      <technique_common>
+        <point>
+          <color sid="color">1000 1000 1000</color>
+          <constant_attenuation>1</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0.00111109</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <extra>
+        <technique profile="blender">
+          <type sid="type" type="int">0</type>
+          <flag sid="flag" type="int">0</flag>
+          <mode sid="mode" type="int">1</mode>
+          <gamma sid="blender_gamma" type="float">1</gamma>
+          <red sid="red" type="float">1</red>
+          <green sid="green" type="float">1</green>
+          <blue sid="blue" type="float">1</blue>
+          <shadow_r sid="blender_shadow_r" type="float">0</shadow_r>
+          <shadow_g sid="blender_shadow_g" type="float">0</shadow_g>
+          <shadow_b sid="blender_shadow_b" type="float">0</shadow_b>
+          <energy sid="blender_energy" type="float">1000</energy>
+          <dist sid="blender_dist" type="float">29.99998</dist>
+          <spotsize sid="spotsize" type="float">75</spotsize>
+          <spotblend sid="spotblend" type="float">0.15</spotblend>
+          <att1 sid="att1" type="float">0</att1>
+          <att2 sid="att2" type="float">1</att2>
+          <falloff_type sid="falloff_type" type="int">2</falloff_type>
+          <clipsta sid="clipsta" type="float">0.04999995</clipsta>
+          <clipend sid="clipend" type="float">30.002</clipend>
+          <bias sid="bias" type="float">1</bias>
+          <soft sid="soft" type="float">3</soft>
+          <bufsize sid="bufsize" type="int">2880</bufsize>
+          <samp sid="samp" type="int">3</samp>
+          <buffers sid="buffers" type="int">1</buffers>
+          <area_shape sid="area_shape" type="int">1</area_shape>
+          <area_size sid="area_size" type="float">0.1</area_size>
+          <area_sizey sid="area_sizey" type="float">0.1</area_sizey>
+          <area_sizez sid="area_sizez" type="float">1</area_sizez>
+        </technique>
+      </extra>
+    </light>
+  </library_lights>
+  <library_effects>
+    <effect id="rouge-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8000001 0.01505436 0.00944666 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="blanc-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8 0.8 0.8 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="jaune-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.8000001 0.5924832 0.03903922 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Material-effect">
+      <profile_COMMON>
+        <newparam sid="contreplaque2_jpg-surface">
+          <surface type="2D">
+            <init_from>contreplaque2_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="contreplaque2_jpg-sampler">
+          <sampler2D>
+            <source>contreplaque2_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="contreplaque2_jpg-sampler"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="bleu-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.00299162 0.01418096 0.8000001 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="contreplaque2_jpg" name="contreplaque2_jpg">
+      <init_from>contreplaque2.jpg</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="rouge-material" name="rouge">
+      <instance_effect url="#rouge-effect"/>
+    </material>
+    <material id="blanc-material" name="blanc">
+      <instance_effect url="#blanc-effect"/>
+    </material>
+    <material id="jaune-material" name="jaune">
+      <instance_effect url="#jaune-effect"/>
+    </material>
+    <material id="Material-material" name="Material">
+      <instance_effect url="#Material-effect"/>
+    </material>
+    <material id="bleu-material" name="bleu">
+      <instance_effect url="#bleu-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Manchon_Bleu_008-mesh" name="Manchon Bleu.008">
+      <mesh>
+        <source id="Manchon_Bleu_008-mesh-positions">
+          <float_array id="Manchon_Bleu_008-mesh-positions-array" count="33">0.435 0.13583 2.044 0.51 0.13583 2.044 0.51 0.13583 2.022 0.4373635 0.1216488 2.044 0.4405066 0.1216701 2.044 0.5077158 0.122125 2.044 0.5085269 0.1269915 2.02344 0.5085837 0.1273325 2.022 0.4677427 0.13583 2.044 0.51 0.13583 2.04213 0.5099144 0.1353164 2.044</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_008-mesh-positions-array" count="11" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Manchon_Bleu_008-mesh-normals">
+          <float_array id="Manchon_Bleu_008-mesh-normals-array" count="21">0 0 1 0.9863874 -0.1644377 0 0.986392 -0.1644111 2.61883e-6 2.5061e-6 0 1 0.9863944 -0.1643968 7.36983e-7 0.9863951 -0.1643922 0 -3.9661e-6 0 1</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_008-mesh-normals-array" count="7" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Manchon_Bleu_008-mesh-vertices">
+          <input semantic="POSITION" source="#Manchon_Bleu_008-mesh-positions"/>
+        </vertices>
+        <lines count="1">
+          <input semantic="VERTEX" source="#Manchon_Bleu_008-mesh-vertices" offset="0"/>
+          <p>7 2</p>
+        </lines>
+        <triangles material="rouge-material" count="9">
+          <input semantic="VERTEX" source="#Manchon_Bleu_008-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Manchon_Bleu_008-mesh-normals" offset="1"/>
+          <p>3 0 4 0 0 0 10 1 9 1 1 1 8 0 10 0 1 0 5 2 9 2 10 2 5 3 10 3 8 3 5 4 6 4 9 4 6 5 2 5 9 5 8 0 0 0 4 0 4 6 5 6 8 6</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Manchon_Bleu_007-mesh" name="Manchon Bleu.007">
+      <mesh>
+        <source id="Manchon_Bleu_007-mesh-positions">
+          <float_array id="Manchon_Bleu_007-mesh-positions-array" count="33">0.51 0.13583 2.022 0.4404786 0.1029582 2.044 0.44773 0.1030956 2.044 0.5047243 0.1041756 2.044 0.5052489 0.107323 2.026646 0.5053893 0.1081656 2.022 0.4373635 0.1216488 2.044 0.4405066 0.1216701 2.044 0.5077158 0.122125 2.044 0.5085269 0.1269915 2.02344 0.5085837 0.1273325 2.022</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_007-mesh-positions-array" count="11" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Manchon_Bleu_007-mesh-normals">
+          <float_array id="Manchon_Bleu_007-mesh-normals-array" count="27">0.9863909 -0.1644172 -1.17293e-5 2.1392e-6 0 1 0.9863905 -0.16442 1.29516e-6 0.9863942 -0.1643971 1.10589e-6 5.25788e-5 0 1 -7.30606e-6 0 1 0.9864025 -0.1643477 -1.31252e-5 0.9863938 -0.1643998 1.10763e-6 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_007-mesh-normals-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Manchon_Bleu_007-mesh-vertices">
+          <input semantic="POSITION" source="#Manchon_Bleu_007-mesh-positions"/>
+        </vertices>
+        <triangles material="blanc-material" count="9">
+          <input semantic="VERTEX" source="#Manchon_Bleu_007-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Manchon_Bleu_007-mesh-normals" offset="1"/>
+          <p>10 0 0 0 9 0 2 1 8 1 7 1 5 2 9 2 4 2 4 3 8 3 3 3 1 4 7 4 6 4 2 5 3 5 8 5 5 6 10 6 9 6 4 7 9 7 8 7 1 8 2 8 7 8</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Manchon_Bleu_006-mesh" name="Manchon Bleu.006">
+      <mesh>
+        <source id="Manchon_Bleu_006-mesh-positions">
+          <float_array id="Manchon_Bleu_006-mesh-positions-array" count="30">0.4433917 0.08547955 2.044 0.4544788 0.08574157 2.044 0.5018385 0.08686083 2.044 0.5021392 0.08866465 2.029686 0.5023006 0.08963328 2.022 0.4404786 0.1029582 2.044 0.44773 0.1030956 2.044 0.5047243 0.1041756 2.044 0.5052489 0.107323 2.026646 0.5053893 0.1081656 2.022</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_006-mesh-positions-array" count="10" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Manchon_Bleu_006-mesh-normals">
+          <float_array id="Manchon_Bleu_006-mesh-normals-array" count="24">4.20623e-6 0 1 0.986393 -0.1644054 -2.86141e-6 0.9863939 -0.164399 4.63336e-6 4.12025e-6 0 1 0 0 1 0.9863958 -0.1643881 1.167e-6 0.9863942 -0.1643975 1.41605e-6 -3.83707e-5 0 1</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_006-mesh-normals-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Manchon_Bleu_006-mesh-vertices">
+          <input semantic="POSITION" source="#Manchon_Bleu_006-mesh-positions"/>
+        </vertices>
+        <triangles material="rouge-material" count="8">
+          <input semantic="VERTEX" source="#Manchon_Bleu_006-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Manchon_Bleu_006-mesh-normals" offset="1"/>
+          <p>1 0 7 0 6 0 4 1 8 1 3 1 3 2 7 2 2 2 0 3 6 3 5 3 1 4 2 4 7 4 4 5 9 5 8 5 3 6 8 6 7 6 0 7 1 7 6 7</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Manchon_Bleu_005-mesh" name="Manchon Bleu.005">
+      <mesh>
+        <source id="Manchon_Bleu_005-mesh-positions">
+          <float_array id="Manchon_Bleu_005-mesh-positions-array" count="30">0.4464933 0.06687039 2.044 0.4616006 0.06742835 2.044 0.4988289 0.06880336 2.044 0.4989609 0.06959515 2.032794 0.4990879 0.07035779 2.022 0.4433917 0.08547955 2.044 0.4544788 0.08574157 2.044 0.5018385 0.08686083 2.044 0.5021392 0.08866465 2.029686 0.5023006 0.08963328 2.022</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_005-mesh-positions-array" count="10" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Manchon_Bleu_005-mesh-normals">
+          <float_array id="Manchon_Bleu_005-mesh-normals-array" count="21">-2.12806e-6 0 1 0.9863927 -0.1644063 -2.82206e-6 0.9863942 -0.1643975 2.26987e-6 2.81014e-5 0 1 0 0 1 0.9863948 -0.1643939 -3.1608e-6 0.9863945 -0.1643962 4.76489e-6</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_005-mesh-normals-array" count="7" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Manchon_Bleu_005-mesh-vertices">
+          <input semantic="POSITION" source="#Manchon_Bleu_005-mesh-positions"/>
+        </vertices>
+        <triangles material="blanc-material" count="8">
+          <input semantic="VERTEX" source="#Manchon_Bleu_005-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Manchon_Bleu_005-mesh-normals" offset="1"/>
+          <p>1 0 7 0 6 0 4 1 8 1 3 1 3 2 7 2 2 2 0 3 6 3 5 3 1 4 2 4 7 4 4 5 9 5 8 5 3 6 8 6 7 6 0 4 1 4 6 4</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Manchon_Bleu_004-mesh" name="Manchon Bleu.004">
+      <mesh>
+        <source id="Manchon_Bleu_004-mesh-positions">
+          <float_array id="Manchon_Bleu_004-mesh-positions-array" count="30">0.4496943 0.04766404 2.044 0.4690607 0.04824525 2.044 0.495535 0.04903972 2.044 0.4955403 0.04907166 2.036138 0.4955499 0.04912912 2.022 0.4464933 0.06687039 2.044 0.4616006 0.06742835 2.044 0.4988289 0.06880336 2.044 0.4989609 0.06959515 2.032794 0.4990879 0.07035779 2.022</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_004-mesh-positions-array" count="10" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Manchon_Bleu_004-mesh-normals">
+          <float_array id="Manchon_Bleu_004-mesh-normals-array" count="21">2.57125e-6 0 1 0.9863943 -0.1643972 -9.90006e-7 0.9863935 -0.1644018 1.10865e-6 7.9752e-6 0 1 0 0 1 0.9863939 -0.1643993 -2.63107e-6 0.9863943 -0.1643973 2.21772e-6</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_004-mesh-normals-array" count="7" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Manchon_Bleu_004-mesh-vertices">
+          <input semantic="POSITION" source="#Manchon_Bleu_004-mesh-positions"/>
+        </vertices>
+        <triangles material="rouge-material" count="8">
+          <input semantic="VERTEX" source="#Manchon_Bleu_004-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Manchon_Bleu_004-mesh-normals" offset="1"/>
+          <p>1 0 7 0 6 0 4 1 8 1 3 1 3 2 7 2 2 2 0 3 6 3 5 3 1 4 2 4 7 4 4 5 9 5 8 5 3 6 8 6 7 6 0 4 1 4 6 4</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Manchon_Bleu_003-mesh" name="Manchon Bleu.003">
+      <mesh>
+        <source id="Manchon_Bleu_003-mesh-positions">
+          <float_array id="Manchon_Bleu_003-mesh-positions-array" count="30">0.4537799 0.02315068 2.044 0.4909525 0.02154487 2.022 0.4782989 0.02449011 2.044 0.4915641 0.02521473 2.044 0.4914566 0.02456939 2.040131 0.4496943 0.04766404 2.044 0.4690607 0.04824525 2.044 0.495535 0.04903972 2.044 0.4955403 0.04907166 2.036138 0.4955499 0.04912912 2.022</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_003-mesh-positions-array" count="10" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Manchon_Bleu_003-mesh-normals">
+          <float_array id="Manchon_Bleu_003-mesh-normals-array" count="21">-4.75734e-6 0 1 0.9863936 -0.1644011 6.63688e-7 0.9863942 -0.1643974 0 3.41601e-6 0 1 0 0 1 0.9863939 -0.1643994 -9.12173e-7 0.9863936 -0.1644013 9.58584e-7</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_003-mesh-normals-array" count="7" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Manchon_Bleu_003-mesh-vertices">
+          <input semantic="POSITION" source="#Manchon_Bleu_003-mesh-positions"/>
+        </vertices>
+        <triangles material="blanc-material" count="8">
+          <input semantic="VERTEX" source="#Manchon_Bleu_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Manchon_Bleu_003-mesh-normals" offset="1"/>
+          <p>2 0 7 0 6 0 9 1 4 1 1 1 4 2 7 2 3 2 0 3 6 3 5 3 2 4 3 4 7 4 9 5 8 5 4 5 4 6 8 6 7 6 0 4 2 4 6 4</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Manchon_Bleu_002-mesh" name="Manchon Bleu.002">
+      <mesh>
+        <source id="Manchon_Bleu_002-mesh-positions">
+          <float_array id="Manchon_Bleu_002-mesh-positions-array" count="24">0.4575 8.29993e-4 2.044 0.4875 8.29993e-4 2.044 0.4875 8.29993e-4 2.022 0.4537799 0.02315068 2.044 0.4909525 0.02154487 2.022 0.4782989 0.02449011 2.044 0.4915641 0.02521473 2.044 0.4914566 0.02456939 2.040131</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_002-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Manchon_Bleu_002-mesh-normals">
+          <float_array id="Manchon_Bleu_002-mesh-normals-array" count="18">0 0 1 0 -1 0 0.9863955 -0.1643895 0 0.9863939 -0.1643991 0 -4.21593e-6 0 1 0.9863937 -0.1644009 7.78686e-7</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_002-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Manchon_Bleu_002-mesh-vertices">
+          <input semantic="POSITION" source="#Manchon_Bleu_002-mesh-positions"/>
+        </vertices>
+        <triangles material="rouge-material" count="7">
+          <input semantic="VERTEX" source="#Manchon_Bleu_002-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Manchon_Bleu_002-mesh-normals" offset="1"/>
+          <p>5 0 1 0 6 0 0 1 2 1 1 1 1 2 7 2 6 2 2 3 7 3 1 3 0 4 5 4 3 4 2 5 4 5 7 5 0 0 1 0 5 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Manchon_Bleu_001-mesh" name="Manchon Bleu.001">
+      <mesh>
+        <source id="Manchon_Bleu_001-mesh-positions">
+          <float_array id="Manchon_Bleu_001-mesh-positions-array" count="177">0.6030999 0.2795814 2.044 0.583899 0.2750166 2.044 0.62 0.17583 2.044 0.6951049 0.2529177 2.044 0.6791082 0.2644769 2.044 0.7333065 0.1854932 2.044 0.735 0.16583 2.044 0.6613707 0.2731308 2.044 0.6424147 0.2786244 2.044 0.6227985 0.2807959 2.044 0.7282758 0.2045773 2.044 0.7200561 0.2225202 2.044 0.7088895 0.2387934 2.044 0.7200561 0.2225202 2.022 0.7282758 0.2045773 2.022 0.62 0.17583 2.022 0.62 0.16583 2.022 0.7333065 0.1854932 2.022 0.735 0.16583 2.022 0.583899 0.2750166 2.022 0.6030999 0.2795814 2.022 0.6227985 0.2807959 2.022 0.6424147 0.2786244 2.022 0.6613707 0.2731308 2.022 0.6791082 0.2644769 2.022 0.6951049 0.2529177 2.022 0.7088895 0.2387934 2.022 0.62 0.1672424 2.044 0.6246823 0.1671657 2.044 0.6252225 0.1671569 2.044 0.6257883 0.1671476 2.044 0.6431677 0.166863 2.044 0.6403886 0.1669085 2.044 0.6780571 0.1662917 2.044 0.6801406 0.1662576 2.044 0.7322345 0.1654045 2.044 0.635808 0.1669835 2.044 0.6060405 0.16583 2.022 0.6202955 0.1655966 2.022 0.6202798 0.1655968 2.022 0.6735478 0.1647245 2.022 0.7225941 0.1639214 2.022 0.6202493 0.1655973 2.022 0.6202167 0.1655978 2.022 0.6379975 0.1669477 2.044 0.735 0.1653592 2.044 0.6444064 0.1668427 2.044 0.6622784 0.16655 2.044 0.6543458 0.16668 2.044 0.6479251 0.1667851 2.044 0.62 0.16583 2.025065 0.6576408 0.164985 2.022 0.6758015 0.1646876 2.022 0.7234269 0.1639077 2.022 0.735 0.1638277 2.023468 0.735 0.1637182 2.022 0.6595091 0.1649544 2.022 0.6527769 0.1667056 2.044 0.6273648 0.1654808 2.022</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_001-mesh-positions-array" count="59" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Manchon_Bleu_001-mesh-normals">
+          <float_array id="Manchon_Bleu_001-mesh-normals-array" count="159">0 0 1 -7.70634e-5 0 1 -1.74004e-5 0 1 -4.5098e-7 0 1 2.48138e-6 0 1 1.15932e-5 0 1 1.71074e-5 0 1 0 0 -1 3.75921e-6 0 -1 5.49451e-6 0 -1 6.86403e-6 0 -1 1.44024e-5 0 -1 -1.35348e-6 0 -1 -3.59635e-6 0 -1 -5.36298e-6 0 -1 3.46602e-6 0 -1 -1 0 0 -0.939693 -0.342019 0 0.9963118 0.08580726 0 0.9963111 0.08581578 0 0.9669677 0.2548992 0 0.9669699 0.2548911 0 0.9091426 0.4164852 0 0.9091458 0.416478 0 0.8245388 0.5658055 0 0.8245448 0.5657967 0 0.7156622 0.6984467 0 0.7156601 0.6984488 0 0.5856958 0.8105311 0 0.5856901 0.8105351 0 0.4384838 0.8987391 0 0.2783516 0.9604793 0 0.2783539 0.9604787 0 0.1100289 0.9939284 0 0.110028 0.9939286 0 -0.06153696 0.9981049 0 -0.06153804 0.9981048 0 -0.2312918 0.9728845 0 -0.2312968 0.9728832 0 1 0 0 0.00591737 0 -0.9999826 -0.007906138 0 -0.9999688 1.80115e-5 0 -1 0 1 0 3.8208e-5 0 1 -6.47325e-6 0 1 8.01926e-5 0 1 -4.34276e-5 0 1 -2.12524e-4 0 1 1.63456e-5 0 1 -1.69556e-5 0 -1 -2.07523e-6 0 1 -1 7.59694e-6 0</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu_001-mesh-normals-array" count="53" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Manchon_Bleu_001-mesh-vertices">
+          <input semantic="POSITION" source="#Manchon_Bleu_001-mesh-positions"/>
+        </vertices>
+        <triangles material="jaune-material" count="84">
+          <input semantic="VERTEX" source="#Manchon_Bleu_001-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Manchon_Bleu_001-mesh-normals" offset="1"/>
+          <p>0 0 1 0 2 0 27 0 28 0 2 0 46 0 3 0 31 0 3 1 32 1 31 1 35 0 45 0 6 0 35 0 5 0 34 0 7 2 36 2 44 2 36 0 2 0 30 0 2 3 8 3 9 3 2 4 9 4 0 4 47 0 11 0 48 0 48 0 11 0 57 0 11 5 49 5 57 5 12 6 46 6 49 6 13 7 14 7 15 7 39 7 42 7 16 7 15 8 51 8 58 8 51 7 14 7 56 7 14 9 40 9 56 9 40 7 17 7 52 7 17 10 41 10 52 10 41 7 18 7 53 7 53 7 18 7 55 7 19 11 20 11 15 11 15 12 20 12 21 12 21 7 22 7 15 7 15 13 22 13 23 13 15 14 23 14 24 14 24 7 25 7 15 7 15 7 25 7 26 7 15 15 26 15 13 15 15 16 16 16 2 16 19 17 15 17 1 17 1 17 15 17 2 17 6 18 18 18 17 18 6 19 17 19 5 19 5 20 17 20 14 20 5 21 14 21 10 21 10 22 14 22 13 22 10 23 13 23 11 23 11 24 13 24 26 24 11 25 26 25 12 25 12 26 26 26 25 26 12 27 25 27 3 27 3 28 25 28 24 28 3 29 24 29 4 29 4 30 24 30 23 30 4 30 23 30 7 30 7 31 23 31 22 31 7 32 22 32 8 32 8 33 22 33 21 33 8 34 21 34 9 34 9 35 21 35 20 35 9 36 20 36 0 36 0 37 20 37 19 37 0 38 19 38 1 38 55 39 18 39 54 39 54 39 6 39 45 39 16 40 42 40 43 40 16 41 38 41 39 41 16 42 58 42 38 42 16 7 43 7 37 7 16 43 37 43 50 43 5 44 33 44 34 44 10 45 33 45 5 45 4 46 44 46 32 46 2 47 29 47 30 47 2 48 28 48 29 48 2 16 50 16 27 16 3 0 4 0 32 0 35 0 6 0 5 0 7 0 8 0 36 0 36 49 8 49 2 49 47 0 10 0 11 0 11 0 12 0 49 0 12 0 3 0 46 0 15 7 14 7 51 7 14 7 17 7 40 7 17 50 18 50 41 50 54 39 18 39 6 39 16 7 15 7 58 7 10 51 47 51 33 51 4 0 7 0 44 0 2 52 16 52 50 52</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Manchon_Bleu-mesh" name="Manchon Bleu">
+      <mesh>
+        <source id="Manchon_Bleu-mesh-positions">
+          <float_array id="Manchon_Bleu-mesh-positions-array" count="246">0.62 0.16583 2.044 0.6328349 0.1520799 2.044 0.63375 0.1529951 2.044 0.635 0.15333 2.044 0.63625 0.1529951 2.044 0.6371651 0.1520799 2.044 0.6375 0.15083 2.044 0.6371651 0.14958 2.044 0.735 0.13583 2.044 0.4575 8.29993e-4 2.044 0.435 0.13583 2.044 0.51 0.13583 2.044 0.435 0.16583 2.044 0.6328349 0.14958 2.044 0.6325 0.15083 2.044 0.63625 0.1486649 2.044 0.635 0.14833 2.044 0.63375 0.1486649 2.044 0.63375 0.1486649 2.022 0.635 0.14833 2.022 0.51 0.13583 2.022 0.435 0.16583 2.022 0.435 0.13583 2.022 0.4875 8.29993e-4 2.022 0.4575 8.29993e-4 2.022 0.63625 0.1529951 2.022 0.635 0.15333 2.022 0.735 0.13583 2.022 0.63375 0.1529951 2.022 0.6328349 0.1520799 2.022 0.6325 0.15083 2.022 0.6328349 0.14958 2.022 0.6371651 0.1520799 2.022 0.6375 0.15083 2.022 0.6371651 0.14958 2.022 0.63625 0.1486649 2.022 0.62 0.1672424 2.044 0.6246823 0.1671657 2.044 0.6252225 0.1671569 2.044 0.6257883 0.1671476 2.044 0.6431677 0.166863 2.044 0.6403886 0.1669085 2.044 0.6780571 0.1662917 2.044 0.6801406 0.1662576 2.044 0.7322345 0.1654045 2.044 0.635808 0.1669835 2.044 0.6060405 0.16583 2.022 0.6202955 0.1655966 2.022 0.6202798 0.1655968 2.022 0.6735478 0.1647245 2.022 0.7225941 0.1639214 2.022 0.6202493 0.1655973 2.022 0.6202167 0.1655978 2.022 0.6379975 0.1669477 2.044 0.735 0.1653592 2.044 0.6444064 0.1668427 2.044 0.6622784 0.16655 2.044 0.6543458 0.16668 2.044 0.6479251 0.1667851 2.044 0.62 0.16583 2.025065 0.6576408 0.164985 2.022 0.6758015 0.1646876 2.022 0.7234269 0.1639077 2.022 0.735 0.1638277 2.023468 0.735 0.1637182 2.022 0.6595091 0.1649544 2.022 0.6527769 0.1667056 2.044 0.6273648 0.1654808 2.022 0.4537799 0.02315068 2.044 0.4909525 0.02154487 2.022 0.4496943 0.04766404 2.044 0.4955499 0.04912912 2.022 0.4464933 0.06687039 2.044 0.4990879 0.07035779 2.022 0.4433917 0.08547955 2.044 0.5023006 0.08963328 2.022 0.4404786 0.1029582 2.044 0.5053893 0.1081656 2.022 0.4373635 0.1216488 2.044 0.5085837 0.1273325 2.022 0.4677427 0.13583 2.044 0.51 0.13583 2.04213</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu-mesh-positions-array" count="82" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Manchon_Bleu-mesh-normals">
+          <float_array id="Manchon_Bleu-mesh-normals-array" count="192">0 0 1 -4.42984e-4 0 1 8.78523e-5 0 1 4.51025e-5 0 1 -9.4803e-6 0 1 8.09979e-6 0 1 1.86293e-6 0 1 0 0 -1 -1.85078e-6 0 -1 -1 0 0 0 1 0 0 -1 0 -0.986394 -0.1643987 0 -0.9863937 -0.1644005 2.98632e-6 0.9659412 -0.258762 0 0.9659249 -0.258823 0 0.7071027 -0.707111 0 0.7070741 -0.7071395 0 0.2588277 -0.9659236 0 0.2588151 -0.9659269 0 -0.2588113 -0.965928 0 -0.2587988 -0.9659313 0 -0.7071354 -0.7070782 0 -0.7071068 -0.7071068 0 -0.9659249 -0.258823 0 -0.9659249 0.258823 0 -0.7071027 0.707111 0 -0.7071395 0.7070741 0 -0.2587949 0.9659323 0 -0.2588151 0.9659269 0 0.2588113 0.965928 0 0.2588315 0.9659226 0 0.7070701 0.7071436 0 0.7071068 0.7071068 0 0.9659249 0.258823 0 0.9659412 0.258762 0 1 0 0 -3.11592e-6 0 -1 -4.71945e-5 0 1 -1.18341e-5 0 1 6.21168e-5 0 1 6.87035e-7 0 -1 -1.69101e-5 0 -1 1.11849e-5 0 1 -1.31078e-6 0 1 5.54321e-7 0 1 -3.83139e-7 0 1 3.82561e-6 0 1 -8.80142e-6 0 1 1.09489e-5 0 1 5.00044e-5 0 1 -1.44055e-5 0 -1 1.11847e-5 0 -1 -0.9863927 -0.1644066 2.2085e-6 -0.9863944 -0.1643965 0 -0.986394 -0.164399 -2.85355e-6 -0.9863966 -0.1643829 -5.60942e-7 -0.9863936 -0.1644012 0 -0.9863933 -0.1644033 -5.02687e-6 0 1 9.90015e-7 8.07169e-5 0 1 -1.57716e-4 0 -1 2.85107e-5 0 1 -1.51245e-5 0 1</float_array>
+          <technique_common>
+            <accessor source="#Manchon_Bleu-mesh-normals-array" count="64" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Manchon_Bleu-mesh-vertices">
+          <input semantic="POSITION" source="#Manchon_Bleu-mesh-positions"/>
+        </vertices>
+        <triangles material="Material-material" count="117">
+          <input semantic="VERTEX" source="#Manchon_Bleu-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Manchon_Bleu-mesh-normals" offset="1"/>
+          <p>37 0 2 0 38 0 2 1 39 1 38 1 42 0 6 0 43 0 7 0 8 0 6 0 80 0 12 0 10 0 12 0 11 0 13 0 12 0 13 0 0 0 0 2 13 2 14 2 0 3 14 3 1 3 41 0 53 0 3 0 42 0 56 0 5 0 7 0 15 0 8 0 8 4 15 4 16 4 8 0 16 0 11 0 11 5 16 5 17 5 11 6 17 6 13 6 18 7 19 7 20 7 21 7 20 7 22 7 22 7 73 7 71 7 22 7 23 7 24 7 47 7 26 7 48 7 20 7 19 7 27 7 51 7 29 7 52 7 29 8 46 8 52 8 21 7 29 7 30 7 21 7 30 7 20 7 20 7 30 7 31 7 20 7 31 7 18 7 47 7 67 7 25 7 34 7 27 7 35 7 35 7 27 7 19 7 36 9 59 9 0 9 20 10 11 10 81 10 11 11 27 11 8 11 24 11 23 11 9 11 22 12 24 12 10 12 24 13 74 13 76 13 21 9 22 9 12 9 12 9 22 9 10 9 46 10 0 10 59 10 0 10 21 10 12 10 14 14 30 14 1 14 1 15 30 15 29 15 1 16 29 16 2 16 2 17 29 17 28 17 2 18 28 18 3 18 3 19 28 19 26 19 3 20 26 20 4 20 4 21 26 21 25 21 4 22 25 22 5 22 5 23 25 23 32 23 5 24 32 24 6 24 6 24 32 24 33 24 6 25 33 25 7 25 7 25 33 25 34 25 7 26 34 26 15 26 15 27 34 27 35 27 15 28 35 28 16 28 16 29 35 29 19 29 16 30 19 30 17 30 17 31 19 31 18 31 17 32 18 32 13 32 13 33 18 33 31 33 13 34 31 34 14 34 14 35 31 35 30 35 27 36 63 36 8 36 62 7 27 7 34 7 25 37 67 37 60 37 60 7 32 7 25 7 4 38 66 38 58 38 5 0 66 0 4 0 5 39 56 39 57 39 4 40 58 40 55 40 8 36 63 36 54 36 33 41 61 41 50 41 50 7 34 7 33 7 32 42 65 42 49 42 49 7 33 7 32 7 28 7 48 7 26 7 3 43 53 43 45 43 8 44 44 44 6 44 6 45 44 45 43 45 4 0 40 0 3 0 3 46 40 46 41 46 3 47 45 47 39 47 0 48 37 48 36 48 37 49 1 49 2 49 2 0 3 0 39 0 42 50 5 50 6 50 80 0 11 0 12 0 22 7 20 7 79 7 79 7 77 7 22 7 77 7 75 7 22 7 75 7 73 7 22 7 69 7 23 7 22 7 71 51 69 51 22 51 47 52 25 52 26 52 51 7 28 7 29 7 29 7 21 7 46 7 20 11 27 11 11 11 78 53 10 53 24 53 24 54 9 54 68 54 70 55 72 55 24 55 72 56 74 56 24 56 24 57 68 57 70 57 76 58 78 58 24 58 46 59 21 59 0 59 27 36 64 36 63 36 62 7 64 7 27 7 60 7 65 7 32 7 5 60 57 60 66 60 50 7 62 7 34 7 49 7 61 7 33 7 28 61 51 61 48 61 8 62 54 62 44 62 4 63 55 63 40 63 0 0 1 0 37 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Manchon_Bleu_008" name="Manchon Bleu.008" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Manchon_Bleu_008-mesh" name="Manchon Bleu.008">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="rouge-material" target="#rouge-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Manchon_Bleu_007" name="Manchon Bleu.007" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Manchon_Bleu_007-mesh" name="Manchon Bleu.007">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="blanc-material" target="#blanc-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Manchon_Bleu_006" name="Manchon Bleu.006" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Manchon_Bleu_006-mesh" name="Manchon Bleu.006">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="rouge-material" target="#rouge-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Manchon_Bleu_005" name="Manchon Bleu.005" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Manchon_Bleu_005-mesh" name="Manchon Bleu.005">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="blanc-material" target="#blanc-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Manchon_Bleu_004" name="Manchon Bleu.004" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Manchon_Bleu_004-mesh" name="Manchon Bleu.004">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="rouge-material" target="#rouge-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Manchon_Bleu_003" name="Manchon Bleu.003" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Manchon_Bleu_003-mesh" name="Manchon Bleu.003">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="blanc-material" target="#blanc-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Manchon_Bleu_002" name="Manchon Bleu.002" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Manchon_Bleu_002-mesh" name="Manchon Bleu.002">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="rouge-material" target="#rouge-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Manchon_Bleu_001" name="Manchon Bleu.001" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Manchon_Bleu_001-mesh" name="Manchon Bleu.001">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="jaune-material" target="#jaune-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Manchon_Bleu" name="Manchon Bleu" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Manchon_Bleu-mesh" name="Manchon Bleu">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Material-material" target="#Material-material"/>
+              <instance_material symbol="bleu-material" target="#bleu-material"/>
+              <instance_material symbol="rouge-material" target="#rouge-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Camera" name="Camera" type="NODE">
+        <matrix sid="transform">0.6859207 -0.3240135 0.6515582 7.358891 0.7276763 0.3054208 -0.6141704 -6.925791 0 0.8953956 0.4452714 4.958309 0 0 0 1</matrix>
+        <instance_camera url="#Camera-camera"/>
+      </node>
+      <node id="Light" name="Light" type="NODE">
+        <matrix sid="transform">-0.2908646 -0.7711008 0.5663932 4.076245 0.9551712 -0.1998834 0.2183912 1.005454 -0.05518906 0.6045247 0.7946723 5.903862 0 0 0 1</matrix>
+        <instance_light url="#Light-light"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
