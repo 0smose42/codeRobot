@@ -1,46 +1,5 @@
 <sdf version='1.7'>
   <world name='default'>
-    <model name='terrain2020'>
-      <static>1</static>
-      <link name='link'>
-        <collision name='terrain2020'>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>model://terrain2020/terrain2020.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='rock'>
-          <cast_shadows>1</cast_shadows>
-          <pose>0 0 0 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>model://terrain2020/terrain2020.dae</uri>
-              <scale>1 1 1</scale>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>0 0 0 0 -0 0</pose>
-    </model>
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
     <atmosphere type='adiabatic'/>
@@ -74,6 +33,11 @@
         <quadratic>0.001</quadratic>
       </attenuation>
       <cast_shadows>1</cast_shadows>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
     </light>
     <light name='user_point_light_0' type='point'>
       <pose>-2.28248 -2.74758 1 0 -0 0</pose>
@@ -87,17 +51,22 @@
       </attenuation>
       <cast_shadows>0</cast_shadows>
       <direction>0 0 -1</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
     </light>
     <state world_name='default'>
-      <sim_time>198 150000000</sim_time>
-      <real_time>201 732168846</real_time>
-      <wall_time>1619345911 984300012</wall_time>
-      <iterations>198150</iterations>
-      <model name='terrain2020'>
-        <pose>0 0 0 0 -0 3.14143</pose>
+      <sim_time>462 295000000</sim_time>
+      <real_time>264 491884548</real_time>
+      <wall_time>1631458456 577155114</wall_time>
+      <iterations>264145</iterations>
+      <model name='terrain2021'>
+        <pose>-0.000442 -0.001772 0.000615 0 0 -1.5709</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>0 0 0 0 -0 3.14143</pose>
+          <pose>-0.000442 -0.001772 0.000615 0 0 -1.5709</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -112,10 +81,51 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>2.12523 6.20452 5.04642 -0 0.647644 -1.50299</pose>
+        <pose>5.34825 2.02576 2.32897 0 0.426202 -3.12937</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
     </gui>
+    <model name='terrain2021'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='terrain2021'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://terrain2021/terrain2021.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='rock'>
+          <cast_shadows>1</cast_shadows>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://terrain2021/terrain2021.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.011837 0.024385 0 0 -0 0</pose>
+    </model>
   </world>
 </sdf>
