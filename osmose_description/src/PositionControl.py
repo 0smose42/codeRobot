@@ -37,9 +37,9 @@ class PositionControllerNode:
         self.config = {}
         self.velocity_gain = float(rospy.get_param("position_control/velocity_gain"))
 
-        self.pos_des = numpy.zeros(3)
+        self.pos_des = numpy.array([])
         self.quat_des = numpy.array([0, 0, 0, 1])
-        self.position = numpy.zeros(3)
+        self.position = numpy.array([])
         self.orientation = numpy.array([0, 0, 0, 1])
         self.ang_v= numpy.zeros(3)
         self.t = rospy.get_time()
@@ -59,15 +59,15 @@ class PositionControllerNode:
         self.srv_reconfigure = Server(PositionControlConfig, self.config_callback)
 
         #execution Timer, so ze can decide the delay between 2 process
-        timer_excution_delay = 3
-        self.info_process_timer = rospy.Timer(rospy.Duration(timer_excution_delay), self.execution)
+        timer_excution_delay = 1000000 #ns
+        self.info_process_timer = rospy.Timer(rospy.Duration(nsecs=timer_excution_delay), self.execution)
 
 
     def cmd_pose_callback(self, msg):
         """Handle updated set pose callback."""
         # Just store the desired pose. The actual control runs on odometry callbacks
-        p = msg.pose.position
-        q = msg.pose.orientation
+        p = msg.pose.position 
+        q = msg.pose.orientation 
         self.pos_des = numpy.array([p.x, p.y,self.position[2]])
         self.quat_des = numpy.array([q.x, q.y, q.z, q.w])
 
@@ -86,13 +86,13 @@ class PositionControllerNode:
             pass
         elif msg.trajtype ==1:
             #Position
-            self.pos_des = numpy.array([msg.position[0], msg.position[1],self.position[2]])
-            
+            self.pos_des = numpy.array([msg.position[0]* 0.01, msg.position[1]* 0.01,self.position[2]* 0.01])
             #direction 
             direction =1 #?????????
 
         elif msg.trajtype ==2:
-            self.pos_des = self.position + msg.distance 
+            self.pos_des[0] = self.position[0] + msg.distance* 0.01
+            self.pos_des[1] = self.position[1] 
             self.pos_des[2]= self.position[2]
 
         elif msg.trajtype ==3 or msg.trajtype ==4: #????????????????????
@@ -100,7 +100,7 @@ class PositionControllerNode:
             self.quat_des = rot.as_quat()
 
         elif msg.trajtype == 5:
-            angle_desired = numpy.arctan2((msg.position[1]-self.position[1]) / (msg.position[0]-self.position[0]) )
+            angle_desired = numpy.arctan2((msg.position[1]* 0.01-self.position[1]) / (msg.position[0]* 0.01-self.position[0]) )
             rot = Rotation.from_euler('xyz', [0, 0, angle_desired], degrees=True)
             self.quat_des = rot.as_quat()
 
@@ -153,36 +153,37 @@ class PositionControllerNode:
 
         self.check_param()
         
-        # Position error
-        e_pos_world = self.pos_des - self.position
-        print("des et pos",self.pos_des,self.position)
-        e_pos_body = trans.quaternion_matrix(self.orientation).transpose()[0:3,0:3].dot(e_pos_world)
+        if len(self.position) > 1 and len(self.pos_des) > 1 :
+            # Position error
+            e_pos_world = self.pos_des - self.position
+            print("des et pos",self.pos_des,self.position)
+            e_pos_body = trans.quaternion_matrix(self.orientation).transpose()[0:3,0:3].dot(e_pos_world)
 
-        # Error quaternion wrt body frame
-        # e_rot_quat = trans.quaternion_multiply(trans.quaternion_conjugate(q), self.quat_des)
-        #WE don't care in an arena of 2m width 
-        # if numpy.linalg.norm(e_pos_world[0:2]) > 5.0:
-        #     # special case if we are far away from goal:
-        #     # ignore desired heading, look towards goal position
-        #     heading = math.atan2(e_pos_world[1],e_pos_world[0])
-        #     quat_des = numpy.array([0, 0, math.sin(0.5*heading), math.cos(0.5*heading)])
-        #     e_rot_quat = trans.quaternion_multiply(trans.quaternion_conjugate(q), quat_des)
-        # Error angles
-        # e_rot = numpy.array(trans.euler_from_quaternion(e_rot_quat))
+            # Error quaternion wrt body frame
+            # e_rot_quat = trans.quaternion_multiply(trans.quaternion_conjugate(q), self.quat_des)
+            #WE don't care in an arena of 2m width 
+            # if numpy.linalg.norm(e_pos_world[0:2]) > 5.0:
+            #     # special case if we are far away from goal:
+            #     # ignore desired heading, look towards goal position
+            #     heading = math.atan2(e_pos_world[1],e_pos_world[0])
+            #     quat_des = numpy.array([0, 0, math.sin(0.5*heading), math.cos(0.5*heading)])
+            #     e_rot_quat = trans.quaternion_multiply(trans.quaternion_conjugate(q), quat_des)
+            # Error angles
+            # e_rot = numpy.array(trans.euler_from_quaternion(e_rot_quat))
 
 
-        v_linear = self.pid_pos.regulate(e_pos_body, self.t)  * self.velocity_gain  #We can reduce the output of the cmd_vel if desired
-        v_angular = self.pid_rot.regulate(self.quat_des,self.orientation, self.ang_v,self.t)
+            v_linear = self.pid_pos.regulate(e_pos_body, self.t)  * self.velocity_gain  #We can reduce the output of the cmd_vel if desired
+            v_angular = self.pid_rot.regulate(self.quat_des,self.orientation, self.ang_v,self.t)
 
-        # Convert and publish vel. command:
-        cmd_vel = geometry_msgs.Twist()
-        cmd_vel.linear = geometry_msgs.Vector3(*v_linear)
-        cmd_vel.angular = geometry_msgs.Vector3(*v_angular)
+            # Convert and publish vel. command:
+            cmd_vel = geometry_msgs.Twist()
+            cmd_vel.linear = geometry_msgs.Vector3(*v_linear)
+            cmd_vel.angular = geometry_msgs.Vector3(*v_angular)
 
-        self.pub_cmd_vel.publish(cmd_vel)
+            self.pub_cmd_vel.publish(cmd_vel)
 
-        if numpy.linalg.norm(e_pos_world[0:1]) < 0.05: #5cm
-            print("goal reached") #TO DO: send a real msg with end
+            if numpy.linalg.norm(e_pos_world[0:1]) < 0.05: #5cm
+                print("goal reached") #TO DO: send a real msg with end
             
 
 
