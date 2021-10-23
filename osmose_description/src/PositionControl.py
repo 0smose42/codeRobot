@@ -68,7 +68,7 @@ class PositionControllerNode:
         # Just store the desired pose. The actual control runs on odometry callbacks
         p = msg.pose.position
         q = msg.pose.orientation
-        self.pos_des = numpy.array([p.x, p.y])
+        self.pos_des = numpy.array([p.x, p.y,self.position[2]])
         self.quat_des = numpy.array([q.x, q.y, q.z, q.w])
 
     def cmd_traj_callback(self,msg):
@@ -86,13 +86,14 @@ class PositionControllerNode:
             pass
         elif msg.trajtype ==1:
             #Position
-            self.pos_des = numpy.array([msg.position[0], msg.position[1]])
+            self.pos_des = numpy.array([msg.position[0], msg.position[1],self.position[2]])
             
             #direction 
             direction =1 #?????????
 
         elif msg.trajtype ==2:
             self.pos_des = self.position + msg.distance 
+            self.pos_des[2]= self.position[2]
 
         elif msg.trajtype ==3 or msg.trajtype ==4: #????????????????????
             rot = Rotation.from_euler('xyz', [0, 0, msg.angle], degrees=True)
@@ -123,7 +124,7 @@ class PositionControllerNode:
         
         p = msg.pose.pose.position
         q = msg.pose.pose.orientation
-        self.position = numpy.array([p.x, p.y])
+        self.position = numpy.array([p.x, p.y,p.z])
         self.orientation = numpy.array([q.x, q.y, q.z, q.w])
         self.ang_v= numpy.array([msg.twist.twist.angular.x,msg.twist.twist.angular.y,msg.twist.twist.angular.z])
         self.t = msg.header.stamp.to_sec()
@@ -154,6 +155,7 @@ class PositionControllerNode:
         
         # Position error
         e_pos_world = self.pos_des - self.position
+        print("des et pos",self.pos_des,self.position)
         e_pos_body = trans.quaternion_matrix(self.orientation).transpose()[0:3,0:3].dot(e_pos_world)
 
         # Error quaternion wrt body frame
